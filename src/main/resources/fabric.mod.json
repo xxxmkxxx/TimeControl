@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "timecontrol",
+  "version": "${version}",
+  "name": "TimeControl",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/timecontrol/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.xxxmkxxx.timecontrol.client.TimeControlClient"
+    ],
+    "server": [
+      "com.xxxmkxxx.timecontrol.server.TimeControlServer"
+    ]
+  },
+  "mixins": [
+    "timecontrol.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.18.1"
+  }
+}
