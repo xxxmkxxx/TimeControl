@@ -26,4 +26,9 @@ public class SimpleTicker implements Ticker {
     public void removeTask(String name) {
         TASKS.remove(name);
     }
+
+    @Override
+    public void changeTask(String task, Runnable runnable) {
+        TASKS.get(task).changeAction(runnable);
+    }
 }
