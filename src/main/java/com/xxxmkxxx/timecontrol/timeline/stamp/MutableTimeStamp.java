@@ -8,21 +8,21 @@ public class MutableTimeStamp extends AbstractChangeableTimeStamp {
     private final List<TimeStampListener> LISTENERS;
     private long TICK;
 
-    public MutableTimeStamp(int seconds, long currentTick) {
-        this.TICK = seconds * 20L + currentTick;
+    public MutableTimeStamp(long tick, long currentTick) {
+        this.TICK = tick + currentTick;
         this.LISTENERS = new LinkedList<>();
     }
 
     @Override
-    public boolean increaseActivationTick(int seconds) {
-        TICK += seconds * 20;
+    public boolean increaseActivationTick(long tick) {
+        TICK += tick;
 
         return true;
     }
 
     @Override
-    public boolean decreaseActivationTick(int seconds) {
-        TICK -= seconds * 20;
+    public boolean decreaseActivationTick(long tick) {
+        TICK -= tick;
 
         return true;
     }

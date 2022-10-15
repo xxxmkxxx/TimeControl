@@ -8,8 +8,8 @@ public class ImmutableTimeStamp extends AbstractTimeStamp {
     private final List<TimeStampListener> LISTENERS;
     private final long TICK;
 
-    public ImmutableTimeStamp(int seconds, long currentTick) {
-        this.TICK = seconds * 20L + currentTick;
+    public ImmutableTimeStamp(long tick, long currentTick) {
+        this.TICK = tick + currentTick;
         this.LISTENERS = new LinkedList<>();
     }
 

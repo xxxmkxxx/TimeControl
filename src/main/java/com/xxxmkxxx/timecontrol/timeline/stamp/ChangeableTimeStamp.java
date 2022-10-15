@@ -1,6 +1,6 @@
 package com.xxxmkxxx.timecontrol.timeline.stamp;
 
 public interface ChangeableTimeStamp extends TimeStamp {
-    boolean increaseActivationTick(int seconds);
-    boolean decreaseActivationTick(int seconds);
+    boolean increaseActivationTick(long tick);
+    boolean decreaseActivationTick(long tick);
 }

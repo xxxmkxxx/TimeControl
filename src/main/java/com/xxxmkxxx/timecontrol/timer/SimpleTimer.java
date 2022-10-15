@@ -12,15 +12,15 @@ public class SimpleTimer extends AbstractTimer {
     private final Task TASK;
     private final boolean EXEC_CONSTANTLY;
     private TimerState timerState;
-    private int seconds;
+    private long ticks;
 
-    public SimpleTimer(long currentTick, int seconds, Task task, boolean execConstantly, TimerState state) {
+    public SimpleTimer(long currentTick, int tick, Task task, boolean execConstantly, TimerState state) {
         this.START_TICK = currentTick;
-        this.stopTick = currentTick + seconds * 20;
+        this.stopTick = currentTick + tick;
         this.TASK = task;
         this.EXEC_CONSTANTLY = execConstantly;
         this.timerState = state;
-        this.seconds = seconds;
+        this.ticks = tick;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class SimpleTimer extends AbstractTimer {
 
     @Override
     public int activationSecond() {
-        return seconds;
+        return (int) (ticks / 20);
     }
 
     @Override
