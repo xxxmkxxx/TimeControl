@@ -6,4 +6,5 @@ import com.xxxmkxxx.timecontrol.common.Ticked;
 public interface Ticker  extends Ticked {
     void addTask(Task task);
     void removeTask(String name);
+    void changeTask(String task, Runnable runnable);
 }
