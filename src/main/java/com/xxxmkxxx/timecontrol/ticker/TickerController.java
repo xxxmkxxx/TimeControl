@@ -9,4 +9,8 @@ public record TickerController(Ticker TICKER) {
 
         TICKER.addTask(task);
     }
+
+    public void changeTask(String name, Runnable runnable) {
+        TICKER.changeTask(name, runnable);
+    }
 }
