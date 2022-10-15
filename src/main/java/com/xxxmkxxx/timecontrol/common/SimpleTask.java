@@ -15,6 +15,11 @@ public class SimpleTask implements Task {
     }
 
     @Override
+    public void changeAction(Runnable runnable) {
+        this.runnable = runnable;
+    }
+
+    @Override
     public void execute() {
         runnable.run();
     }
