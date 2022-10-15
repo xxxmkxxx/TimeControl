@@ -16,23 +16,35 @@ import com.xxxmkxxx.timecontrol.timeline.MutableTimeLine;
 import com.xxxmkxxx.timecontrol.timer.TimerController;
 import com.xxxmkxxx.timecontrol.timer.Timers;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public class TimeControl {
     private final GameTime gameTime;
-    private final AbstractChangeableTimeLine mutableTimeLine = new MutableTimeLine();
-    private final AbstractTimeLine immutableTimeLine = new ImmutableTimeLine();
-    private final Scheduler scheduler = new SimpleScheduler(immutableTimeLine, gameTime);
-    private final Ticker ticker = new SimpleTicker();
-    private final StopWatches stopWatches = new StopWatches();
-    private final Timers timers = new Timers(mutableTimeLine, gameTime);
+    private final AbstractChangeableTimeLine mutableTimeLine;
+    private final AbstractTimeLine immutableTimeLine;
+    private final Scheduler scheduler;
+    private final Ticker ticker;
+    private final StopWatches stopWatches;
+    private final Timers timers;
 
-    private final SchedulerController schedulerController = new SchedulerController(scheduler);
-    private final TickerController tickerController = new TickerController(ticker);
-    private final StopWatchController stopWatchController = new StopWatchController(stopWatches);
-    private final TimerController timerController = new TimerController(timers, gameTime);
+    private final SchedulerController schedulerController;
+    private final TickerController tickerController;
+    private final StopWatchController stopWatchController;
+    private final TimerController timerController;
+
+    public TimeControl(GameTime gameTime) {
+        this.gameTime = gameTime;
+        this.mutableTimeLine = new MutableTimeLine();
+        this.immutableTimeLine = new ImmutableTimeLine();
+        this.scheduler = new SimpleScheduler(immutableTimeLine, gameTime);
+        this.ticker = new SimpleTicker();
+        this.stopWatches = new StopWatches();
+        this.timers = new Timers(mutableTimeLine, gameTime);
+        this.schedulerController = new SchedulerController(scheduler);
+        this.tickerController = new TickerController(ticker);
+        this.stopWatchController = new StopWatchController(stopWatches);
+        this.timerController = new TimerController(timers, gameTime);
+    }
 
     public void tick() {
         gameTime.update();
